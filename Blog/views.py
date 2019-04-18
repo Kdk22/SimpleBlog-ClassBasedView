@@ -8,6 +8,7 @@ from .models import Post
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.core.exceptions import  ImproperlyConfigured
 
 
 class IndexView(generic.ListView):
@@ -29,7 +30,7 @@ class PostCreate(CreateView):
     model = Post
     fields =['author', 'title', 'content', 'categories','icon','post_date']
     template_name = 'Blog/post_form.html'
-#    initial = {'date_of_death': '05/01/2018'}
+    success_url = reverse_lazy('Blog:index')
 
 
 class PostDelete(DeleteView):
@@ -40,7 +41,8 @@ class PostDelete(DeleteView):
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'content', 'categories', 'icon', 'post_date']
-
+    template_name = 'Blog/post_form.html'
+    success_url = reverse_lazy('Blog:index')
 
 def index(request):
     return render(request,'Blog/index.html')
