@@ -4,6 +4,43 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .models import Post
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+class IndexView(generic.ListView):
+    template_name = 'Blog/index.html'
+    context_object_name = 'all_posts'  # By default it gives object_list
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+             return self.request.user.posts.all()
+        else:
+            return Post.objects.all()
+
+
+class DetailsView(generic.DetailView):
+    model = Post  # here model passes value to details.html
+    template_name = 'Blog/details.html'
+
+class PostCreate(CreateView):
+    model = Post
+    fields =['author', 'title', 'content', 'categories','icon','post_date']
+    template_name = 'Blog/post_form.html'
+#    initial = {'date_of_death': '05/01/2018'}
+
+
+class PostDelete(DeleteView):
+        model = Post
+        success_url = reverse_lazy('Blog:index')
+
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'content', 'categories', 'icon', 'post_date']
+
 
 def index(request):
     return render(request,'Blog/index.html')
@@ -15,7 +52,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('Blog:index'))
 
 def register(request):
     registered = False

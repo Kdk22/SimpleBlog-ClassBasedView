@@ -1,0 +1,21 @@
+﻿{% extends 'Blog/base.html' %}
+{% block title %} Add a New Article {% endblock %}
+{% comment %}{% block albums_active %} active {% endblock %}{% endcomment %}
+
+{% block body_block %}
+    <div>
+        <h3> Add a New Article</h3>
+            <p><strong> {{ error_message }}</strong></p>
+            <form class=" form-horizontal" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'Blog/form-template.html' %}
+                <div class="form-group">
+                    <div clas="col-sm-offset-2 col-sm-10">
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">Submit</button>
+
+                    </div>
+                </div>
+            </form>
+            </div>
+{% endblock %}

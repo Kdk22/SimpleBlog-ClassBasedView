@@ -1,15 +1,58 @@
 {% extends "Blog/base.html" %}
 {% block body_block %}
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to the Djungle !</h1>
-    {% if user.is_authenticated %}
-        <h2>Hello {{ user.username }}</h2>
-    {% else %}
-        <h2>Register or Login if you'd like to</h2>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome to the Djungle !</h1>
+      {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+            <a href="{% url 'Blog:create' %}">Create New Article</a>
+
+           {% for Post in all_posts %}
+          <div>
+                          <a href="{% url 'Blog:details' pk=Post.id %}">
+                               <img src="{{ Post.icon.url }}" class="img-responsive">
+
+
+                          </a>
+                    <h1>
+                                {{ Post.title}}
+                                <small>{{ Post.author }}</small>
+                            </h1>
+                            <h2> {{ Post.categories }}</h2>
+                            <p>{{ Post.content }}</p>
+                            <h3>{{  Post.post_date }}</h3>
+                </div>
+
+
+            </div>
+            {% endfor %}
+
+
+            {% else %}
+                <h2>Register or Login if you'd like to</h2>
+
+      {% for Post in all_posts %}
+          <div>
+                          <a href="{% url 'Blog:details' pk=Post.id %}">
+                               <img src="{{ Post.icon.url }}" class="img-responsive">
+
+
+                          </a>
+                    <h1>
+                                {{ Post.title}}
+                                <small>{{ Post.author }}</small>
+                            </h1>
+                            <h2> {{ Post.categories }}</h2>
+                            <p>{{ Post.content }}</p>
+                            <h3>{{  Post.post_date }}</h3>
+                </div>
+
+
+      </div>
+        {% endfor %}
     {% endif %}
-  </div>
-</div>
+    </div>
+
 
 {% endblock %}
