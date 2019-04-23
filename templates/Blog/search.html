@@ -1,0 +1,25 @@
+{% extends "Blog/base.html" %}
+{% block body_block %}
+
+    <div class="container">
+          <div class="jumbotron">
+            <h1>Welcome to the Djungle !</h1>
+{% comment %}          {% if user.is_authenticated %}
+                <h2>Hello {{ user.username }} Your Search is Ready</h2>
+          {% else  %}
+                <h2>Log In if You like to </h2>
+          {% endif %}{% endcomment %}
+        <div class="panel-body">
+           <img src="{{ results.icon.url }}" class="img-responsive">
+
+            <h1>
+                {{ results.title}}
+                <small>{{ results.author }}</small>
+            </h1>
+        <h2> {{ results.categories }}</h2>
+        <p>{{ results.content }}</p>
+        <h3>{{  results.post_date }}</h3>
+        </div>
+          </div>
+    </div>
+{% endblock %}

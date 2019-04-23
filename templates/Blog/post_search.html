@@ -1,0 +1,35 @@
+{% extends "Blog/base.html" %}
+{% block body_block %}
+<div class="container">
+
+    <h2>Post list</h2>
+
+
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Categories</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Post Date</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{object.icon}}</td>
+            <td>{{object.title}}</td>
+            <td>{{object.categories}}</td>
+            <td>{{object.content}}</td>
+            <td>{{object.author}}</td>
+            <td>{{object.post_date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if is_paginated %}
+        {% include "paginator.html" %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

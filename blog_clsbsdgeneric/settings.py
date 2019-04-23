@@ -75,6 +75,12 @@ WSGI_APPLICATION = 'blog_clsbsdgeneric.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tamang5sweeta@gmail.com'
+EMAIL_HOST_PASSWORD = '5camprock5'
+EMAIL_PORT = 587
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
