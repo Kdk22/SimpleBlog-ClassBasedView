@@ -9,17 +9,21 @@
           {% else  %}
                 <h2>Log In if You like to </h2>
           {% endif %}{% endcomment %}
-        <div class="panel-body">
-           <img src="{{ results.icon.url }}" class="img-responsive">
 
+    {% for context in results %}
+
+        <div class="panel-body">
+           <img src="{{ context.icon.url }}" class="img-responsive">
+            <script>console.log({{ context.title }})</script>
             <h1>
-                {{ results.title}}
+                {{ context.title}}
                 <small>{{ results.author }}</small>
             </h1>
-        <h2> {{ results.categories }}</h2>
-        <p>{{ results.content }}</p>
-        <h3>{{  results.post_date }}</h3>
+        <h2> {{ context.categories }}</h2>
+        <p>{{ context.content }}</p>
+        <h3>{{  context.post_date }}</h3>
         </div>
+              {% endfor %}
           </div>
     </div>
 {% endblock %}

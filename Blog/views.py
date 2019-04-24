@@ -44,8 +44,9 @@ class SearchView(TemplateView):
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-
-        return super().get_context_data(results=self.results, **kwargs)
+        context_object_name= 'results'
+        context = super().get_context_data(results=self.results, **kwargs)
+        return context
 
 
 class DetailsView(generic.DetailView):
