@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post , Comment
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -18,6 +18,7 @@ from django.utils.encoding import force_bytes, force_text
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .forms import PostSearchForm
 from search_views.search import SearchListView
@@ -40,7 +41,10 @@ class SearchView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         search = request.GET.get('q', '')
-        self.results = Post.objects.filter(title__startswith=search)
+        self.results = Post.objects.get(
+            Q(title__startswith=search) |
+            Q(author__iexact=search) | Q(content__starts= search) | Q(categories__startswith=search) | Q(post_date=search)
+        )
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -50,8 +54,11 @@ class SearchView(TemplateView):
 
 
 class DetailsView(generic.DetailView):
-    model = Post  # here model passes value to details.html
+    model = Post
+    # here model passes value to details.html
+    fields = ['comment_text', 'comment_date']
     template_name = 'Blog/details.html'
+
 
 class PostCreate(CreateView):
     # Post.author= request.user

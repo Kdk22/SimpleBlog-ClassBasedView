@@ -14,4 +14,16 @@
     <h3>{{  post.post_date }}</h3>
 </div>
 
+{% if user.is_authenticated %}
+                <form class=" form-horizontal" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'Blog/form-template.html' %}
+                <div class="form-group">
+                    <div clas="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Comment</button>
+
+                    </div>
+                </div>
+            </form>
+    {% endif %}
 {% endblock %}

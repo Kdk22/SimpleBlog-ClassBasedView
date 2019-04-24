@@ -3,9 +3,15 @@
 <head>
     <meta charset="utf-8">
     <title>Base</title>
-
+    {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.custom.js"></script>
+    <script type="text/javascript" href="{% static 'jquery/jQRangeSlider-min.js' %}"></script>
+
+
 
 </head>
 <body>
@@ -25,6 +31,14 @@
                  <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search"/>
                  <input class="searchbutton" type="submit" value="Search"/>
              </form></li>
+            {% if user.is_superuser %}
+            <div id="slider"></div>
+                  <script>
+                //<!--
+                  $("#slider").rangeSlider();
+                //-->
+                </script>
+            {% endif %}
 
             {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -41,3 +55,19 @@
 </div>
 </body>
 </html>
+<script
+$(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: new Date('2010.01.01').getTime() / 1000,
+      max: new Date('2014.01.01').getTime() / 1000,
+      step: 86400,
+      values: [ new Date('2013.01.01').getTime() / 1000, new Date('2013.02.01').getTime() / 1000 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( (new Date(ui.values[ 0 ] *1000).toDateString() ) + " - " + (new Date(ui.values[ 1 ] *1000)).toDateString() );
+      }
+    });
+    $( "#amount" ).val( (new Date($( "#slider-range" ).slider( "values", 0 )*1000).toDateString()) +
+      " - " + (new Date($( "#slider-range" ).slider( "values", 1 )*1000)).toDateString());
+  });
+</script>

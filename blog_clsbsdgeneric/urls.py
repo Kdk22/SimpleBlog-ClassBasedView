@@ -24,6 +24,7 @@ from Blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('Blog.urls')),
+    path('dashboard/', include('dashboard.urls')),
 
     url(r'^special/', views.special, name='special'),
 
@@ -32,3 +33,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

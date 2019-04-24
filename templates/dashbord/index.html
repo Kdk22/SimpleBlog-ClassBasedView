@@ -1,0 +1,33 @@
+{% extends "dashbord/base.html" %}
+{% block body_block %}
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome to the Djungle !</h1>
+
+           {% for Post in all_posts %}
+          <div>
+                          <a href="{% url 'Blog:details' pk=Post.id %}">
+                               <img src="{{ Post.icon.url }}" class="img-responsive">
+
+
+                          </a>
+                    <h1>
+                                {{ Post.title}}
+                                <small>{{ Post.author }}</small>
+                            </h1>
+                            <h2> {{ Post.categories }}</h2>
+                            <p>{{ Post.content }}</p>
+                            <h3>{{  Post.post_date }}</h3>
+                </div>
+
+
+
+            </div>
+
+            {% endfor %}
+
+    </div>
+
+
+{% endblock %}
