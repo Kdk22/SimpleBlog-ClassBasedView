@@ -63,7 +63,12 @@
                             <h2> {{ Post.categories }}</h2>
                             <p>{{ Post.content }}</p>
                             <h3>{{  Post.post_date }}</h3>
-                </div>
+          </div>
+          {% if user.is_userisauthenticated %}
+
+              <div></div>
+
+          {%  endif  %}
 
 
       </div>

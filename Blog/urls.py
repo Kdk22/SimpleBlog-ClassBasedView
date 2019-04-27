@@ -12,6 +12,7 @@ urlpatterns=[
     url(r'^user_login/$',views.user_login,name='user_login'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
+    path('admin/dashboard', views.DashBoard.as_view(), name='dashboard'),
     path('home/', views.home, name='home'),
     path('create/', views.PostCreate.as_view(), name='create'),
     path('<int:pk>/', views.DetailsView.as_view(), name='details'),

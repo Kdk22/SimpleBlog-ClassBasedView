@@ -6,7 +6,7 @@
        <img src="{{ post.icon.url }}" class="img-responsive">
 
     <h1>
-        {{ Post.title}}
+        {{ post.title}}
         <small>{{ post.author }}</small>
     </h1>
     <h2> {{ post.categories }}</h2>
@@ -14,16 +14,20 @@
     <h3>{{  post.post_date }}</h3>
 </div>
 
-{% if user.is_authenticated %}
-                <form class=" form-horizontal" action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% include 'Blog/form-template.html' %}
-                <div class="form-group">
-                    <div clas="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">Comment</button>
+<h1>{{ comments.count }} Comment{{ comments|pluralize }} </h1>
+{% for c in comments %}
+    <p>{{ c.comment_text }}</p>
+    <h3>Commented by: {{ c.user.username }} Commented on : {{ c.comment_date }}</h3>
 
-                    </div>
-                </div>
+    {% endfor %}
+
+
+{% if user.is_authenticated %}
+            <form method="POST" class="post-form">
+                       {% csrf_token %}
+                       {{ form.as_p}}
+                    <button type="submit" class="save btn btn-default">comment</button>
             </form>
+
     {% endif %}
 {% endblock %}

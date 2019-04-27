@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from Blog.forms import UserForm,UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, request
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import Post , Comment
@@ -18,9 +18,10 @@ from django.utils.encoding import force_bytes, force_text
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
+from itertools import chain
 from django.db.models import Q
 
-from .forms import PostSearchForm
+from .forms import PostSearchForm, CommentForm
 from search_views.search import SearchListView
 from search_views.filters import BaseFilter
 
@@ -28,6 +29,8 @@ from search_views.filters import BaseFilter
 class IndexView(generic.ListView):
     template_name = 'Blog/index.html'
     context_object_name = 'all_posts'  # By default it gives object_list
+    model = Post
+    fields = ['like_count']
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
@@ -41,10 +44,8 @@ class SearchView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         search = request.GET.get('q', '')
-        self.results = Post.objects.get(
-            Q(title__startswith=search) |
-            Q(author__iexact=search) | Q(content__starts= search) | Q(categories__startswith=search) | Q(post_date=search)
-        )
+        # self.results = Post.objects.get(Q(title__startswith=search) | Q(content__icontains=search))
+        self.results = Post.objects.filter(title__startswith=search)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -52,12 +53,75 @@ class SearchView(TemplateView):
         context = super().get_context_data(results=self.results, **kwargs)
         return context
 
+class DashBoard(generic.ListView):
+    template_name = 'Blog/dashboard.html'
+    context_object_name = 'all_posts'  # By default it gives object_list
+
+    def get_queryset(self):
+        pass
+        # if self.request.user.is_superuser:
+        #     post_get = Post.objects.all()
+        #     comment_all = Comment.objects.all()
+        #     comment_get = Post.comment_
+        # return chain(post_get, comment_get)
+
+
+
 
 class DetailsView(generic.DetailView):
     model = Post
+    print('value of model:', model)
     # here model passes value to details.html
     fields = ['comment_text', 'comment_date']
     template_name = 'Blog/details.html'
+    #comment_form = CommentForm(data= request.POST)
+    #context_object_name = comment_form
+    # f= CommentForm.Meta.fields
+    # def get_context_data(self, **kwargs):
+    #     context = super(DetailsView, self).get_context_data(**kwargs)
+    #     context= CommentForm.Meta.fields
+    #     import ipdb
+    #     ipdb.set_trace()
+    #     return context
+
+    def get_context_data(self, **kwargs):
+        """Insert the single object into the context dict."""
+        context = {}
+        form = CommentForm()
+
+        if self.object:
+            context['object'] = self.object
+            context_object_name = self.get_context_object_name(self.object)
+            comments = self.object.comments.all()
+           # commentors = Comment.comments.all()
+            context['comments'] = comments
+            context['form'] = form
+           # context['commentors']= commentors
+            if context_object_name:
+                context[context_object_name] = self.object
+        import ipdb
+        ipdb.set_trace()
+        context.update(kwargs)
+        return super().get_context_data(**context)
+
+    # def get_context_data(self, **kwargs):
+    #     context = {}
+    #     all_posts=Post.objects.all()[:5]
+    #     for posts in all_posts:
+    #         comments = posts.comments.all()
+    #         values = {
+    #             'posts': posts,
+    #             'comments': comments
+    #         }
+    #         #context['posts'].append(posts)
+    #         #context['comments'].append(comments)
+    #         context.update(values)
+    #
+    #     import ipdb
+    #     ipdb.set_trace()
+    #     for f in context:
+    #         print(f)
+    #     return context
 
 
 class PostCreate(CreateView):
@@ -70,8 +134,6 @@ class PostCreate(CreateView):
             obj.author= self.request.user
             obj.save()
             return super().form_valid(form)
-
-
 
     model = Post
     fields =['title', 'content', 'categories','icon','post_date']
