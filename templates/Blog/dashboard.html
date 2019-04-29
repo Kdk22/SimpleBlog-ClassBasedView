@@ -1,13 +1,105 @@
+
 {% extends "Blog/base.html" %}
+
 {% block body_block %}
 
     <div class="container">
-      <div class="jumbotron">
-        <h1>Welcome to the Djungle !</h1>
-            {% for post in post_get %}
-                {% post.comments_set. %}
-                q.choice_set.all()
-            {% endfor %}
-      </div>
+          <div class="jumbotron">
+            <h1>Welcome to the Djungle !</h1>
+                <h2>Hello Admin {{ user.username }}</h2>
+                <a href="{% url 'Blog:create' %}">Create New Article</a>
+
+               <form action="{% url 'Blog:search' %}">
+                    Title: <input type="text" name="title"><br>
+                    Categories: <input type="text" name="categoies" id="categories"><br>
+                    Post Date: <input type="text" name="daterange" id="daterange"value="01/01/2018 - 01/15/2018" /><br>
+                    User Name: <input type="text" name="author" id = "author"/><br>
+                    <input class="searchbutton" type="submit" value="Search" id="search"/>
+
+                </form>
+
+               {% for Post in all_posts %}
+              <div>
+                              <a href="{% url 'Blog:details' pk=Post.id %}">
+                                   <img src="{{ Post.icon.url }}" class="img-responsive">
+
+
+                              </a>
+                        <h1>
+                                    {{ Post.title}}
+                                    <small>{{ Post.author }}</small>
+                                </h1>
+                                <h2> {{ Post.categories }}</h2>
+                                <p>{{ Post.content }}</p>
+                                <h3>{{  Post.post_date }}</h3>
+                    </div>
+
+    {#               <span>#}
+    {#               <form action="{% url 'Blog:post-delete' pk=Post.id %}" method ="post" style=" display: inline;">#}
+    {#                            {% csrf_token %}#}
+    {#                            <input type="hidden" name="pk" value="{{ Post.id }}" />#}
+    {#                            <button type="submit",name="Delete" >#}
+    {#                                <span class="glyphicon glyphicon-trash"></span>#}
+    {#                            </button>#}
+    {#               </form>#}
+    {#               </span>#}
+    {#                <span>#}
+    {#               <form action="{% url 'Blog:post-update' pk=Post.id %}" method ="post" style=" display: inline;">#}
+    {#                            {% csrf_token %}#}
+    {#                            <input type="hidden" name="pk" value="{{ Post.id }}" />#}
+    {#                            <button type="submit" class="btn btn-primary">Edit</button>#}
+    {##}
+    {#               </form>#}
+    {#               </span>#}
+
+
+
+
+                {% endfor %}
+
+          
+        </div>
     </div>
+
+{#    <script>#}
+{#$(function() {#}
+{#  $('input[name="daterange"]').daterangepicker({#}
+{#    opens: 'left'#}
+{#  }, function(start, end, label) {#}
+{#    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
+{#  });#}
+{#});#}
+{##}
+{##}
+{#let title = $("#title").val();#}
+{#    categories = $("#categories").val();#}
+{#    postdate = $("#postdate").val();#}
+{#    author = $("#author").val();#}
+{##}
+{#$(document).ready(function(){#}
+{#  $("#search").click(function(){#}
+{#$.ajax({#}
+{#    type: "GET",#}
+{#    url: "{% url 'Blog:search' %}",#}
+{##}
+{#    data: {#}
+{#        "title" : title,#}
+{#        "categories": categories,#}
+{#        "postdate": postdate,#}
+{#        "author" : author,#}
+{#    },#}
+{#    success: function(data){#}
+{#        console.log("success");#}
+{#        console.log(data);#}
+{#    },#}
+{#    failure: function(data){#}
+{#        console.log("failure");#}
+{#        console.log(data);#}
+{#    },#}
+{#      });#}
+{#});#}
+{#});#}
+{##}
+{#</script>#}
 {% endblock %}
+

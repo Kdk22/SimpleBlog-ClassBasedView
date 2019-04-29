@@ -21,6 +21,8 @@ urlpatterns=[
 
     path('login/<int:pk>/update/', views.PostUpdate.as_view(), name='update'),
     path('login/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
+    path('<username>/UserView/', views.UserView.as_view(), name='user_view')
+
 
 
 

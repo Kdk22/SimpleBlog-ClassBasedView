@@ -23,23 +23,24 @@
                             <p>{{ Post.content }}</p>
                             <h3>{{  Post.post_date }}</h3>
                 </div>
-               <span>
-               <form action="{% url 'Blog:post-delete' pk=Post.id %}" method ="post" style=" display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{ Post.id }}" />
-                            <button type="submit",name="Delete" >
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-               </form>
-               </span>
-                <span>
-               <form action="{% url 'Blog:post-update' pk=Post.id %}" method ="post" style=" display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{ Post.id }}" />
-                            <button type="submit" class="btn btn-primary">Edit</button>
 
-               </form>
-               </span>
+{#               <span>#}
+{#               <form action="{% url 'Blog:post-delete' pk=Post.id %}" method ="post" style=" display: inline;">#}
+{#                            {% csrf_token %}#}
+{#                            <input type="hidden" name="pk" value="{{ Post.id }}" />#}
+{#                            <button type="submit",name="Delete" >#}
+{#                                <span class="glyphicon glyphicon-trash"></span>#}
+{#                            </button>#}
+{#               </form>#}
+{#               </span>#}
+{#                <span>#}
+{#               <form action="{% url 'Blog:post-update' pk=Post.id %}" method ="post" style=" display: inline;">#}
+{#                            {% csrf_token %}#}
+{#                            <input type="hidden" name="pk" value="{{ Post.id }}" />#}
+{#                            <button type="submit" class="btn btn-primary">Edit</button>#}
+{##}
+{#               </form>#}
+{#               </span>#}
 
             </div>
 
@@ -64,7 +65,7 @@
                             <p>{{ Post.content }}</p>
                             <h3>{{  Post.post_date }}</h3>
           </div>
-          {% if user.is_userisauthenticated %}
+          {% if user.is_authenticated %}
 
               <div></div>
 

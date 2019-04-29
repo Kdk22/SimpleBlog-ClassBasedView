@@ -11,10 +11,8 @@
           {% endif %}{% endcomment %}
 
     {% for context in results %}
-
         <div class="panel-body">
            <img src="{{ context.icon.url }}" class="img-responsive">
-            <script>console.log({{ context.title }})</script>
             <h1>
                 {{ context.title}}
                 <small>{{ results.author }}</small>

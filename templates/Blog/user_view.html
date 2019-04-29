@@ -1,0 +1,75 @@
+{% extends "Blog/base.html" %}
+{% block body_block %}
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome to the Djungle !</h1>
+      {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+            <a href="{% url 'Blog:create' %}">Create New Article</a>
+
+           {% for Post in all_posts %}
+          <div>
+                          <a href="{% url 'Blog:details' pk=Post.id %}">
+                               <img src="{{ Post.icon.url }}" class="img-responsive">
+
+
+                          </a>
+                    <h1>
+                                {{ Post.title}}
+                                <small>{{ Post.author }}</small>
+                            </h1>
+                            <h2> {{ Post.categories }}</h2>
+                            <p>{{ Post.content }}</p>
+                            <h3>{{  Post.post_date }}</h3>
+                            <h4> Votes {{ Post.like_count }}</h4>
+                </div>
+               <span>
+               <form action="{% url 'Blog:post-delete' pk=Post.id %}" method ="post" style=" display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{ Post.id }}" />
+                            <button type="submit",name="Delete" >
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+               </form>
+               </span>
+                <span>
+               <form action="{% url 'Blog:post-update' pk=Post.id %}" method ="post" style=" display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{ Post.id }}" />
+                            <button type="submit" class="btn btn-primary">Edit</button>
+
+               </form>
+               </span>
+               <h1>{{ Post }}</h1>
+
+
+               {% if Post > 1%}
+                {% for Comment in Post %}
+
+                    <h1>{{ Comment.comments.count }} Comment{{ Comment|pluralize }} </h1>
+                    <p>{{ Comment.comment_text }}</p>
+                    <h3>Commented by: {{ Comment.Comment.user.username }} Commented on : {{ c.Comment.comment_date }}</h3>
+
+
+                {% endfor %}
+
+               {% elif Post == 0  %}
+                   <h1> No Comments</h1>
+
+
+               {% else %}
+                     <h1>{{ Post.count }} Comment{{ Comment|pluralize }} </h1>
+                    <p>{{ Post.comment_text }}</p>
+                    <h3>Commented by: {{ Post.user.username }} Commented on : {{ Post.comment_date }}</h3>
+
+
+               {% endif %}
+
+
+            </div>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endblock %}

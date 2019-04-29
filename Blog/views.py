@@ -33,39 +33,120 @@ class IndexView(generic.ListView):
     fields = ['like_count']
 
     def get_queryset(self):
+        # if self.request.user.is_authenticated:
+        #      return self.request.user.posts.all()
+        # else:
+
+        print(self.request.user)
+        # import ipdb
+        # ipdb.set_trace()
+        return Post.objects.all()
+
+
+
+class UserView(generic.ListView):
+    template_name = 'Blog/user_view.html'
+    context_object_name = 'all_posts'
+    model = Post
+    fields = ['like_count']
+
+
+    def get_queryset(self):
         if self.request.user.is_authenticated:
-             return self.request.user.posts.all()
+            return self.request.user.posts.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Get the context for this view."""
+        queryset = object_list if object_list is not None else self.object_list
+        page_size = self.get_paginate_by(queryset)
+        context_object_name = self.get_context_object_name(queryset)
+        if page_size:
+            paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+            context = {
+                'paginator': paginator,
+                'page_obj': page,
+                'is_paginated': is_paginated,
+                'object_list': queryset
+            }
         else:
-            return Post.objects.all()
+            context = {
+                'paginator': None,
+                'page_obj': None,
+                'is_paginated': False,
+                'object_list': queryset
+            }
+        if context_object_name is not None:
+            context[context_object_name] = queryset
+        context.update(kwargs)
+        for p in queryset:
+            comment = p.comments.all()
+            context[str(p)] = comment
+            # str(context[p])
+            # d={'all_comments':comment}
+            # context.upda
+
+        import ipdb
+        ipdb.set_trace()
+
+        return super().get_context_data(**context)
+
+    # def get_context_data(self, **kwargs):
+    #     context = {}
+    #     if self.object:
+    #         context_object_name = self.get_context_object_name(self.object)
+    #         comments = self.object.comments.all()
+    #         # commentors = Comment.comments.all()
+    #         context['comments'] = comments
+    #         context['field'] = self.fields
+    #         if context_object_name:
+    #             context[context_object_name] = self.object
+    #         return super().get_context_data(**context)
 
 
-class SearchView(TemplateView):
+
+class SearchView(SearchListView):
+
+    def get_queryset(self):
+        model = Post
+        title = self.kwargs['title']
+        categoies = self.kwargs['categoies']
+        post_date = self.kwargs['daterange']
+        author = self.kwargs['author']
+        Results = Post.objects.filter(Q(title= title) | Q(categories= categoies) | Q(author= author))
+        import ipdb
+        ipdb.set_trace()
+        return Results
+
     template_name = 'Blog/search.html'
 
-    def get(self, request, *args, **kwargs):
-        search = request.GET.get('q', '')
-        # self.results = Post.objects.get(Q(title__startswith=search) | Q(content__icontains=search))
-        self.results = Post.objects.filter(title__startswith=search)
-        return super().get(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context_object_name= 'results'
-        context = super().get_context_data(results=self.results, **kwargs)
-        return context
+    # def get(self, request, *args, **kwargs):
+    #     search = request.GET.get('q', '')
+    #     # self.results = Post.objects.get(Q(title__startswith=search) | Q(content__icontains=search))
+    #     self.results = Post.objects.filter(title__startswith=search)
+    #     return super().get(request, *args, **kwargs)
+    #
+    # def get_context_data(self, **kwargs):
+    #     context_object_name= 'results'
+    #     context = super().get_context_data(results=self.results, **kwargs)
+    #     return context
 
 class DashBoard(generic.ListView):
     template_name = 'Blog/dashboard.html'
     context_object_name = 'all_posts'  # By default it gives object_list
 
-    def get_queryset(self):
-        pass
+    # def get_queryset(self):
+    #     pass
         # if self.request.user.is_superuser:
         #     post_get = Post.objects.all()
         #     comment_all = Comment.objects.all()
         #     comment_get = Post.comment_
         # return chain(post_get, comment_get)
 
-
+    def get_queryset(self):
+        # if self.request.user.is_authenticated:
+        #      return self.request.user.posts.all()
+        # else:
+            return Post.objects.all()
 
 
 class DetailsView(generic.DetailView):
@@ -99,8 +180,8 @@ class DetailsView(generic.DetailView):
            # context['commentors']= commentors
             if context_object_name:
                 context[context_object_name] = self.object
-        import ipdb
-        ipdb.set_trace()
+        # import ipdb
+        # ipdb.set_trace()
         context.update(kwargs)
         return super().get_context_data(**context)
 
