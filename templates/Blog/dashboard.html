@@ -11,7 +11,7 @@
 
                <form action="{% url 'Blog:search' %}">
                     Title: <input type="text" name="title"><br>
-                    Categories: <input type="text" name="categoies" id="categories"><br>
+                    Categories: <input type="text" name="categories" id="categories"><br>
                     Post Date: <input type="text" name="daterange" id="daterange"value="01/01/2018 - 01/15/2018" /><br>
                     User Name: <input type="text" name="author" id = "author"/><br>
                     <input class="searchbutton" type="submit" value="Search" id="search"/>
@@ -57,18 +57,18 @@
 
                 {% endfor %}
 
-          
         </div>
     </div>
 
-{#    <script>#}
-{#$(function() {#}
-{#  $('input[name="daterange"]').daterangepicker({#}
-{#    opens: 'left'#}
-{#  }, function(start, end, label) {#}
-{#    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
-{#  });#}
-{#});#}
+    <script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+    </script>
 {##}
 {##}
 {#let title = $("#title").val();#}

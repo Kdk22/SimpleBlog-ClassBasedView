@@ -104,20 +104,23 @@ class UserView(generic.ListView):
 
 
 
-class SearchView(SearchListView):
+class SearchView(generic.ListView):
 
-    def get_queryset(self):
-        model = Post
-        title = self.kwargs['title']
-        categoies = self.kwargs['categoies']
-        post_date = self.kwargs['daterange']
-        author = self.kwargs['author']
-        Results = Post.objects.filter(Q(title= title) | Q(categories= categoies) | Q(author= author))
+    def get(self,request, *args,**kwargs):
+        template_name = 'Blog/search.html'
+
+        #model = Post
+        title = request.GET.get('title','')
+        categories =request.GET.get('categories','')
+        #post_date = request.GET.get('daterange','')
+        author = request.GET.get('author','')
         import ipdb
         ipdb.set_trace()
-        return Results
+        # self.results = Post.objects.filter(Q(title= title) | Q(categories= categories) | Q(author= author))
+        self.results = Post.objects.filter(title= title)#.filter(categories=categories).filter(author=author)
+        return super().get(request, *args, **kwargs)
 
-    template_name = 'Blog/search.html'
+
 
     # def get(self, request, *args, **kwargs):
     #     search = request.GET.get('q', '')
