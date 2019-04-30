@@ -20,6 +20,7 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
 from itertools import chain
 from django.db.models import Q
+from django.utils.dateparse import parse_date
 
 from .forms import PostSearchForm, CommentForm
 from search_views.search import SearchListView
@@ -104,20 +105,44 @@ class UserView(generic.ListView):
 
 
 
-class SearchView(SearchListView):
+class SearchView(TemplateView):
 
-    def get_queryset(self):
-        model = Post
-        title = self.kwargs['title']
-        categoies = self.kwargs['categoies']
-        post_date = self.kwargs['daterange']
-        author = self.kwargs['author']
-        Results = Post.objects.filter(Q(title= title) | Q(categories= categoies) | Q(author= author))
-        import ipdb
-        ipdb.set_trace()
-        return Results
+    # def get_queryset(self):
+    #     model = Post
+    #     title = self.kwargs['title']
+    #     categories = self.kwargs['categoies']
+    #     post_date = self.kwargs['daterange']
+    #     author = self.kwargs['author']
+    #     Results = Post.objects.filter(Q(title= title) | Q(categories= categoies) | Q(author= author))
+    #     import ipdb
+    #     ipdb.set_trace()
+    #     return Results
 
     template_name = 'Blog/search.html'
+
+    def get(self, request, *args, **kwargs):
+        title = request.GET.get('title', '')
+        categories = request.GET.get('categories','')
+        start_date = request.GET.get('startdate','')
+        end_date = request.GET.get('enddate','')
+        import ipdb
+        ipdb.set_trace()
+        author = request.GET.get('author','')
+
+        if start_date and end_date is not None:
+            self.results = Post.objects.filter(Q(title__iexact=title) | Q(categories__iexact=categories)  | Q(author__username__iexact=author) &  Q(
+                post_date__range=[start_date, end_date]))
+        else:
+            self.results = Post.objects.filter(Q(title__iexact= title) | Q(categories__iexact= categories)  | Q(author__username__iexact= author))
+        #self.results = Post.objects.filter(title__iexact=title).filter(categories__iexact = categories).filter(author__username__iexact = author)
+
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context_object_name = 'results'
+        context = super().get_context_data(results=self.results, **kwargs)
+
+        return context
 
     # def get(self, request, *args, **kwargs):
     #     search = request.GET.get('q', '')
