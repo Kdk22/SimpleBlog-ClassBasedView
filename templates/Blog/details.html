@@ -23,7 +23,7 @@
 
 
 {% if user.is_authenticated %}
-            <form method="POST" class="post-form">
+            <form method="POST" class="post-form" action="{% url 'Blog:post-comment' pk=post.id%}">
                        {% csrf_token %}
                        {{ form.as_p}}
                     <button type="submit" class="save btn btn-default">comment</button>

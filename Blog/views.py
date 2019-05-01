@@ -125,16 +125,38 @@ class SearchView(TemplateView):
         categories = request.GET.get('categories','')
         start_date = request.GET.get('startdate','')
         end_date = request.GET.get('enddate','')
-        import ipdb
-        ipdb.set_trace()
         author = request.GET.get('author','')
 
-        if start_date and end_date is not None:
-            self.results = Post.objects.filter(Q(title__iexact=title) | Q(categories__iexact=categories)  | Q(author__username__iexact=author) &  Q(
-                post_date__range=[start_date, end_date]))
-        else:
-            self.results = Post.objects.filter(Q(title__iexact= title) | Q(categories__iexact= categories)  | Q(author__username__iexact= author))
-        #self.results = Post.objects.filter(title__iexact=title).filter(categories__iexact = categories).filter(author__username__iexact = author)
+        # if start_date and end_date is None:
+        #     start_date= 9999-12-31
+        #     end_date = 9999-12-31
+
+
+        # self.results = Post.objects.filter(
+        #     Q(title__iexact=title) | Q(categories__iexact=categories) | Q(author__username__iexact=author)| Q(
+        #         post_date__range=[start_date, end_date]))
+        self.results = Post.objects.all()
+
+        if title:
+            self.results = self.results.filter(title__iexact=title)
+
+
+        if categories:
+            self.results = self.results.filter(categories__iexact=categories)
+
+        if start_date and end_date:
+            self.results = self.results.filter(
+                post_date__range=[start_date, end_date])
+
+        if author:
+            self.results = self.results.filter(author__username__iexact=author)
+
+
+            # self.results = self.results.filter(Q(title__iexact=title) | Q(categories__iexact=categories) | Q(author__username__iexact=author) , Q(
+            #     post_date__range=[start_date, end_date]))
+        # else:
+        #     self.results = Post.objects.filter(Q(title__iexact= title) | Q(categories__iexact= categories)  | Q(author__username__iexact= author))
+        # #self.results = Post.objects.filter(title__iexact=title).filter(categories__iexact = categories).filter(author__username__iexact = author)
 
         return super().get(request, *args, **kwargs)
 
@@ -176,19 +198,10 @@ class DashBoard(generic.ListView):
 
 class DetailsView(generic.DetailView):
     model = Post
-    print('value of model:', model)
     # here model passes value to details.html
     fields = ['comment_text', 'comment_date']
     template_name = 'Blog/details.html'
-    #comment_form = CommentForm(data= request.POST)
-    #context_object_name = comment_form
-    # f= CommentForm.Meta.fields
-    # def get_context_data(self, **kwargs):
-    #     context = super(DetailsView, self).get_context_data(**kwargs)
-    #     context= CommentForm.Meta.fields
-    #     import ipdb
-    #     ipdb.set_trace()
-    #     return context
+
 
     def get_context_data(self, **kwargs):
         """Insert the single object into the context dict."""
@@ -199,17 +212,101 @@ class DetailsView(generic.DetailView):
             context['object'] = self.object
             context_object_name = self.get_context_object_name(self.object)
             comments = self.object.comments.all()
-           # commentors = Comment.comments.all()
+            # commentors = Comment.comments.all()
             context['comments'] = comments
             context['form'] = form
-           # context['commentors']= commentors
+            # context['commentors']= commentors
             if context_object_name:
                 context[context_object_name] = self.object
         # import ipdb
         # ipdb.set_trace()
         context.update(kwargs)
+
+
+
+
         return super().get_context_data(**context)
 
+class PostComment(CreateView):
+
+    form = CommentForm()
+
+    model = form.Meta.model
+    fields = form.Meta.fields
+    # template_name = 'Blog/details.html'
+    success_url = reverse_lazy('Blog:index')
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        form = self.get_form()
+        if form.is_valid():
+            p1= Post.objects.get(pk=kwargs['pk'])
+            obj = form.save(commit= False)
+            obj.user = self.request.user
+            obj.post = p1
+            obj.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    # def form_valid(self, form):
+    #
+    #     if self.request.user.is_authenticated:
+    #         import ipdb
+    #         ipdb.set_trace()
+    #         obj= form.save(commit= False)
+    #         obj.user= self.request.user
+    #         return super().form_valid(form)
+
+    # def get_context_data(self, **kwargs):
+    #     ctx =  super().get_context_data(**kwargs)
+    #     import ipdb; ipdb.set_trace()
+    #     return ctx
+    #
+    #comment_form = CommentForm(data= request.POST)
+    #context_object_name = comment_form
+    # f= CommentForm.Meta.fields
+    # def get_context_data(self, **kwargs):
+    #     context = super(DetailsView, self).get_context_data(**kwargs)
+    #     context= CommentForm.Meta.fields
+    #     import ipdb
+    #     ipdb.set_trace()
+    #     return context
+
+    # def get_context_data(self, **kwargs):
+    #     """Insert the single object into the context dict."""
+    #     # context = {}
+    #     ctx = super().get_context_data(**kwargs)
+    #     import ipdb
+    #     ipdb.set_trace()
+    #     form = CommentForm()
+    #
+    #     # if request.method == 'POST':
+    #     #     comment_form = CommentForm(data=request.POST)
+    #     #     if comment_form.is_valid():
+    #     #         new_comment = comment_form.save(commit=False)
+    #     #         import ipdb
+    #     #         ipdb.set_trace()
+    #
+    #
+        # if self.object:
+        #     context['object'] = self.object
+        #     context_object_name = self.get_context_object_name(self.object)
+        #     comments = self.object.comments.all()
+        #    # commentors = Comment.comments.all()
+        #     context['comments'] = comments
+        #     context['form'] = form
+        #    # context['commentors']= commentors
+        #     if context_object_name:
+        #         context[context_object_name] = self.object
+        # # import ipdb
+        # # ipdb.set_trace()
+        # context.update(kwargs)
+        # return super().get_context_data(**context)
+    #     return ctx
     # def get_context_data(self, **kwargs):
     #     context = {}
     #     all_posts=Post.objects.all()[:5]

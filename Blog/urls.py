@@ -18,13 +18,11 @@ urlpatterns=[
     path('<int:pk>/', views.DetailsView.as_view(), name='details'),
     path('<int:pk>/post_delete/', views.PostDelete.as_view(), name='post-delete'),
     path('<int:pk>/post_update/', views.PostUpdate.as_view(), name='post-update'),
+    path('<int:pk>/post_comment/', views.PostComment.as_view(), name='post-comment'),
 
     path('login/<int:pk>/update/', views.PostUpdate.as_view(), name='update'),
     path('login/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
-    path('<username>/UserView/', views.UserView.as_view(), name='user_view')
-
-
-
+    path('<username>/UserView/', views.UserView.as_view(), name='user_view'),
 
 
 

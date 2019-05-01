@@ -22,7 +22,14 @@
                             <h2> {{ Post.categories }}</h2>
                             <p>{{ Post.content }}</p>
                             <h3>{{  Post.post_date }}</h3>
+
+          <form>
+{#              input type="submit" class="btn btn-success" value="Upvote|{{ answer.upvote_set.all.count }}/>#}
+          </form>
+
                 </div>
+
+
 
 {#               <span>#}
 {#               <form action="{% url 'Blog:post-delete' pk=Post.id %}" method ="post" style=" display: inline;">#}
@@ -66,8 +73,10 @@
                             <h3>{{  Post.post_date }}</h3>
           </div>
           {% if user.is_authenticated %}
+                <form method="post">
+                <input type="button" value="vote"/>
 
-              <div></div>
+
 
           {%  endif  %}
 
