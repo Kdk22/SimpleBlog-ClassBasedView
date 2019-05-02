@@ -234,12 +234,14 @@ class PostComment(CreateView):
     model = form.Meta.model
     fields = form.Meta.fields
     # template_name = 'Blog/details.html'
-    success_url = reverse_lazy('Blog:index')
+
 
     def get_success_url(self):
         """Return the URL to redirect to after processing a valid form."""
         if self.success_url:
             url = self.success_url.format(**self.object.__dict__)
+            import ipdb
+            ipdb.set_trace()
         else:
             try:
                 url = self.object.get_absolute_url()
