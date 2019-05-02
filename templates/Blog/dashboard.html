@@ -16,7 +16,15 @@
                    <input type="date" name="startdate" placeholder="YYYY-MM-DD" /><input type = date name="enddate" placeholder="YYYY-MM-DD"/><br>
                     User Name: <input type="text" name="author" id = "author"/><br>
                     <input class="searchbutton" type="submit" value="Search" id="search"/>
-
+    <script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+    </script>
                 </form>
 
                {% for Post in all_posts %}
@@ -62,15 +70,14 @@
         </div>
     </div>
 
-    <script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
-});
-    </script>
+{#    <script>#}
+{#$(function() {#}
+{#  $('input[name="daterange"]').daterangepicker({#}
+{#    opens: 'left'#}
+{#  }, function(start, end, label) {#}
+{#    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
+{#  });#}
+{#});#}
 {##}
 {##}
 {#let title = $("#title").val();#}

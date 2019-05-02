@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="780ec62d-0588-42aa-a052-c549455664e5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Blog/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Blog/dashboard.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+            <state relative-caret-position="169">
+              <caret line="172" column="23" lean-forward="true" selection-start-line="172" selection-start-column="23" selection-end-line="172" selection-end-column="23" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -43,9 +45,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Blog/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="277">
               <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -55,10 +66,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_clsbsdgeneric/urls.py">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+            <state relative-caret-position="75">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -66,17 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Blog/details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="379">
               <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Blog/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="54" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -126,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Blog/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+            <state relative-caret-position="1035">
+              <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -152,8 +154,6 @@
       <find>object</find>
       <find>conso</find>
       <find>ip</find>
-      <find>self</find>
-      <find>User</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,21 +185,22 @@
         <option value="$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/views/generic/detail.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/db/models/options.py" />
         <option value="$PROJECT_DIR$/Blog/models.py" />
+        <option value="$PROJECT_DIR$/templates/Blog/details.html" />
+        <option value="$PROJECT_DIR$/Blog/forms.py" />
         <option value="$PROJECT_DIR$/templates/Blog/user_posts.html" />
         <option value="$PROJECT_DIR$/templates/Blog/userview.html" />
         <option value="$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/views/generic/list.py" />
         <option value="$PROJECT_DIR$/templates/Blog/user_view.html" />
+        <option value="$PROJECT_DIR$/templates/Blog/index.html" />
         <option value="$PROJECT_DIR$/templates/dashbord/base.html" />
         <option value="$PROJECT_DIR$/blog_clsbsdgeneric/settings.py" />
         <option value="$PROJECT_DIR$/blog_clsbsdgeneric/urls.py" />
         <option value="$PROJECT_DIR$/templates/Blog/search.html" />
         <option value="$PROJECT_DIR$/templates/Blog/base.html" />
-        <option value="$PROJECT_DIR$/templates/Blog/dashboard.html" />
-        <option value="$PROJECT_DIR$/templates/Blog/index.html" />
-        <option value="$PROJECT_DIR$/Blog/forms.py" />
         <option value="$PROJECT_DIR$/Blog/urls.py" />
-        <option value="$PROJECT_DIR$/templates/Blog/details.html" />
+        <option value="$PROJECT_DIR$/templates/Blog/dashboard.html" />
         <option value="$PROJECT_DIR$/Blog/views.py" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -221,28 +222,6 @@
             <path>
               <item name="SimpleBlog-ClassBasedView" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimpleBlog-ClassBasedView" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleBlog-ClassBasedView" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleBlog-ClassBasedView" type="462c0819:PsiDirectoryNode" />
-              <item name="Blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleBlog-ClassBasedView" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleBlog-ClassBasedView" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleBlog-ClassBasedView" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleBlog-ClassBasedView" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleBlog-ClassBasedView" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleBlog-ClassBasedView" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dashbord" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -331,18 +310,14 @@
       <workItem from="1556323253212" duration="14152000" />
       <workItem from="1556379456094" duration="4677000" />
       <workItem from="1556450941356" duration="31713000" />
-      <workItem from="1556602364057" duration="21802000" />
-      <workItem from="1556684677168" duration="14192000" />
-      <workItem from="1556711643068" duration="2758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263815000" />
+    <option name="totallyTimeSpent" value="225600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1719697" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -355,12 +330,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899022" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2247557" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.26384366" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32899022" />
-      <window_info anchor="bottom" id="Pylint" order="13" weight="0.32899022" />
+      <window_info anchor="bottom" id="Pylint" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -395,14 +370,33 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/Blog/acc_active_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Blog/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -456,6 +450,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_clsbsdgeneric/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Blog/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="54" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="54" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -511,8 +512,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -548,6 +549,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Blog/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -599,10 +610,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/views/generic/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1590">
           <caret line="116" column="6" selection-start-line="116" selection-start-column="6" selection-end-line="116" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Blog/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -640,83 +668,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Blog/user_view.html" />
-    <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/views/generic/list.py">
+    <entry file="file://$PROJECT_DIR$/blog_clsbsdgeneric/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="116">
+          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/search_views/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/Blog/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="180">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Blog/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Blog/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashbord/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Blog/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Blog/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_clsbsdgeneric/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Blog/details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Blog/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Blog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="210">
+          <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -730,24 +706,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Blog/base.html">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/search_views/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="45">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Blog/index.html">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/blog_clsbsdgeneric/venv/lib/python3.7/site-packages/django/views/generic/list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="67" />
+        <state relative-caret-position="-270">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Blog/user_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashbord/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Blog/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="1035">
+          <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="172" column="23" lean-forward="true" selection-start-line="172" selection-start-column="23" selection-end-line="172" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
